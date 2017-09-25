@@ -8,6 +8,14 @@ tamanhoFrase.text(numPalavras);
 
 var campo = $(".campo-digitacao");
 
-campo.on("click", function(){
-    console.log("ola mundo");
+campo.on("input", function(){
+    
+    var tamanhoPalavras = campo.val().split(" ").length;
+    var tamanhoCaracteres = campo.val().length;
+
+    $("#contador-caracteres").text(tamanhoCaracteres);
+
+    $("#contador-palavras").text(tamanhoPalavras);
+    
+
 });

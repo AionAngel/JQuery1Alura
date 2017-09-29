@@ -38,7 +38,6 @@ function tempoDeJogo() {
         var cronometroID = setInterval(function(){
             tempo--;
             $("#tempo").text(tempo);
-            console.log(tempo);
     
             if(tempo < 1){
                 campo.attr("disabled", true);
@@ -54,6 +53,7 @@ function tempoDeJogo() {
 
 function reiniciaJogo (){
 
+    inserePlacar();
     campo.attr("disabled",false);
     campo.val("");
     $("#contador-caracteres").text("0");
@@ -62,10 +62,10 @@ function reiniciaJogo (){
     campo.removeClass("campo-desativado");
     campo.removeClass("borda-vermelha");
     campo.removeClass("borda-verde");
-    
     tempoDeJogo();
     
 }
+
 
 function inicializaMarcadores () {
 
@@ -81,6 +81,34 @@ function inicializaMarcadores () {
             }
         });
 
+}
+
+function inserePlacar () {
+
+    let nome = "Lucas xD";
+    let noPalavras = $("#contador-palavras").text();
+    console.log(noPalavras);
+    var tabela = document.querySelector("#tabela");
+    console.log(tabela);
+    var dadosTr = criaTr(noPalavras, nome);
+    
+    tabela.appendChild(dadosTr);
+}
+
+
+function criaTd (dado) {
+    var td = document.createElement("td");
+    td.textContent = dado;
+
+    return td;
+}
+
+function criaTr (num,nome) {
+    var tr = document.createElement("tr");
+    tr.appendChild(criaTd(nome));
+    tr.appendChild(criaTd(num));
+
+    return tr;
 }
 
 

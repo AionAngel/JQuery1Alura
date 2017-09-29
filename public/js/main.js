@@ -91,10 +91,11 @@ function inserePlacar () {
 
     let nome = "Lucas xD";
     let noPalavras = $("#contador-palavras").text();
-    var botaoRemover = "<a href='#'><i class='small material-icons'>delete</i></a>" ;
+    //var botaoRemover = "<a href='#'><i class='small material-icons'>delete</i></a>";
+    var botao = criaBotaoRemove();
     
     var tabela = document.querySelector("#tabela");
-    var dadosTr = criaTr(noPalavras, nome, botaoRemover);
+    var dadosTr = criaTr(noPalavras, nome, botao);
 
     
     tabela.appendChild(dadosTr);
@@ -103,7 +104,7 @@ function inserePlacar () {
 
 function criaTd (dado) {
     var td = document.createElement("td");
-    td.textContent = dado;
+    td = dado;
 
     return td;
 }
@@ -118,18 +119,17 @@ function criaTr (num,nome,botao) {
 }
 
 function criaBotaoRemove() {
-    var botao;
+
     var a = document.createElement("a");
+    a.setAttribute('href', '#');
     var i = document.createElement("i");
     i.classList.add("small");
     i.classList.add("material-icons");
     i.textContent = "delete";
-
     a.appendChild(i);
-
+    
     return a;
 }
-
 
 
 

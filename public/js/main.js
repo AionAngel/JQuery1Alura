@@ -104,7 +104,8 @@ function inserePlacar () {
 
 function criaTd (dado) {
     var td = document.createElement("td");
-    td = dado;
+    if(dado.nodeType != 1) td.innerHTML = dado;
+    else td.appendChild(dado);
 
     return td;
 }

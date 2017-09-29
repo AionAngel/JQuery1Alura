@@ -4,24 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/libs/materialize.min.css">
+    <link rel="stylesheet" href="css/estilos.css">
+    <link href="css/libs/google-fonts.css" rel="stylesheet">
     <title>Automation Typer</title>
 </head>
 <body>
-    <h1>Automation Typer</h1>
-    <p class="frase">Automation Solutions Tecnologias Globais</p>
+    <div class="container">
+        <h1 class="center">Automation Typer</h1>
+        <p class="frase center">Automation Solutions Tecnologias Globais</p>
 
-    <ul class="informacoes">
-        <li><span id="tamanho-palavras">30</span> palavras</li>
-        <li><span id="tempo">3</span> segundos</li>
-    </ul>
+        <ul class="informacoes center">
+            <li>
+                <i class="small material-icons icones">description</i>
+                <span id="tamanho-palavras">30</span> palavras
+            </li>
+            <li>
+                <i class="small material-icons icones">query_builder</i>
+                <span id="tempo">10</span> segundos
+            </li>
+        </ul>
 
-    <textarea class="campo-digitacao" name="" id="" cols="30" rows="10"></textarea>
-    <button id="botao-reiniciar">Reiniciar Jogo</button>
+        <textarea class="campo-digitacao" name="" id="" cols="30" rows="10"></textarea>
+        <div class="botoes">
 
-    <ul>
-        <li><span id="contador-caracteres">0</span> caracteres</li>
-        <li><span id="contador-palavras">0</span> palavras</li>
-    </ul>
+                <a class="btn-floating btn-large waves-effect waves-light red" id="botao-reiniciar"><i class="material-icons">restore</i></a>
+
+        </div>
+
+        <ul class="center">
+            <li><span id="contador-caracteres">0</span> caracteres</li>
+            <li><span id="contador-palavras">0</span> palavras</li>
+        </ul>
+    </div>
 
     <script src="js/jquery.js"></script>
     <script src="js/main.js"></script>

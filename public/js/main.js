@@ -52,8 +52,12 @@ function tempoDeJogo() {
 }
 
 function reiniciaJogo (){
-
-    inserePlacar();
+    var palavras = $("#contador-palavras").text();
+    console.log(palavras);
+    if(palavras > 0){
+        
+        inserePlacar();
+    }
     campo.attr("disabled",false);
     campo.val("");
     $("#contador-caracteres").text("0");
@@ -87,10 +91,11 @@ function inserePlacar () {
 
     let nome = "Lucas xD";
     let noPalavras = $("#contador-palavras").text();
-    console.log(noPalavras);
+    var botaoRemover = "<a href='#'><i class='small material-icons'>delete</i></a>" ;
+    
     var tabela = document.querySelector("#tabela");
-    console.log(tabela);
-    var dadosTr = criaTr(noPalavras, nome);
+    var dadosTr = criaTr(noPalavras, nome, botaoRemover);
+
     
     tabela.appendChild(dadosTr);
 }
@@ -103,13 +108,29 @@ function criaTd (dado) {
     return td;
 }
 
-function criaTr (num,nome) {
+function criaTr (num,nome,botao) {
     var tr = document.createElement("tr");
     tr.appendChild(criaTd(nome));
     tr.appendChild(criaTd(num));
+    tr.appendChild(criaTd(botao));
 
     return tr;
 }
+
+function criaBotaoRemove() {
+    var botao;
+    var a = document.createElement("a");
+    var i = document.createElement("i");
+    i.classList.add("small");
+    i.classList.add("material-icons");
+    i.textContent = "delete";
+
+    a.appendChild(i);
+
+    return a;
+}
+
+
 
 
 

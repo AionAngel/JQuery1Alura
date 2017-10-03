@@ -89,49 +89,45 @@ function inicializaMarcadores () {
 
 function inserePlacar () {
 
+    var tabela = $("#tabela");
     let nome = "Lucas xD";
     let noPalavras = $("#contador-palavras").text();
-    //var botaoRemover = "<a href='#'><i class='small material-icons'>delete</i></a>";
-    var botao = criaBotaoRemove();
+   
+    linha = novaLinha(nome, noPalavras);
+    linha.find(".botao-remover").click(removeLinha);
     
-    var tabela = document.querySelector("#tabela");
-    var dadosTr = criaTr(noPalavras, nome, botao);
+    tabela.prepend(linha);
+}
 
-    
-    tabela.appendChild(dadosTr);
+$(".botao-remover").click(removeLinha);
+
+
+function novaLinha(usuario,palavras){
+    var linha = $("<tr>");
+    var colunaUsuario = $("<td>").text(usuario);
+    var colunaPalavras = $("<td>").text(palavras);
+    var colunaRemover = $("<td>");
+
+    var link = $("<a>").attr("href","#").addClass("botao-remover");
+    var icone = $("<i>").addClass("small").addClass("material-icons").text("delete");
+
+    link.append(icone);
+
+    colunaRemover.append(link);
+
+    linha.append(colunaUsuario);
+    linha.append(colunaPalavras);
+    linha.append(colunaRemover);
+
+    return linha;
 }
 
 
-function criaTd (dado) {
-    var td = document.createElement("td");
-    if(dado.nodeType != 1) td.innerHTML = dado;
-    else td.appendChild(dado);
 
-    return td;
+function removeLinha(event) {
+    event.preventDefault();
+    $(this).parent().parent().remove();
 }
-
-function criaTr (num,nome,botao) {
-    var tr = document.createElement("tr");
-    tr.appendChild(criaTd(nome));
-    tr.appendChild(criaTd(num));
-    tr.appendChild(criaTd(botao));
-
-    return tr;
-}
-
-function criaBotaoRemove() {
-
-    var a = document.createElement("a");
-    a.setAttribute('href', '#');
-    var i = document.createElement("i");
-    i.classList.add("small");
-    i.classList.add("material-icons");
-    i.textContent = "delete";
-    a.appendChild(i);
-    
-    return a;
-}
-
 
 
 

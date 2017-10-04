@@ -2,7 +2,16 @@
 $("#botao-placar").click(mostraPlacar);
 
 function mostraPlacar () {
-    $(".placar").slideToggle(600);
+    $(".placar").stop().slideToggle(600);
+}
+
+function scrollPlacar () {
+    var posicaoPlacar = $(".placar").offset().top;
+    
+     $("html, body").animate(
+    {
+        scrollTop: posicaoPlacar + "px"
+    }, 1000);
 }
 
 function inserePlacar () {
@@ -15,6 +24,10 @@ function inserePlacar () {
     linha.find(".botao-remover").click(removeLinha);
     
     tabela.prepend(linha);
+    
+    $(".placar").slideDown(600);
+    
+    scrollPlacar();
 }
 
 $(".botao-remover").click(removeLinha);

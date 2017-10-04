@@ -1,8 +1,10 @@
 
-console.log("ola fui importado");
+console.log("Ola fui importado");
 
-$("#botao").click(mostraH1);
+$("#dropdown").mouseenter(function() {
+    $("#opcoes").stop().slideToggle();
+});
 
-function mostraH1 () {
-    $(".lucas").slideToggle();
-}
+$("#dropdown").mouseleave(function() {
+    $("#opcoes").stop().slideToggle();
+});

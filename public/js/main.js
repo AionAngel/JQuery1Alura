@@ -15,7 +15,7 @@ $(document).ready(function(){
 });
 
 function atualizaTexto() {
-    
+    var frase = $('.frase').text();
     var numPalavras = frase.split(" ").length;
     var tamanhoFrase = $("#tamanho-palavras");
     tamanhoFrase.text(numPalavras);

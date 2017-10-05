@@ -21,6 +21,12 @@ function atualizaTexto() {
     tamanhoFrase.text(numPalavras);
 }
 
+function atualizaTempo(tempo) {
+    
+    $("#tempo").text(tempo);
+    
+}
+
 function atualizaCampo(){
     campo.on("input", function(){
         var tamanhoPalavras = campo.val().split(/\S+/).length - 1;

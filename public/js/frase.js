@@ -20,6 +20,8 @@ function fraseAleatoria () {
       $("#spinner").hide();
         
     });
+    
+    
 }
 
 function trocaFraseAleatoria (data) {
@@ -30,6 +32,7 @@ function trocaFraseAleatoria (data) {
     frase.text(data[numeroAleatorio].texto);
     atualizaTexto();
     atualizaTempo(data[numeroAleatorio].tempo);
+    inicializaMarcadores();
 }
 
 function buscaFrase() {
@@ -54,6 +57,8 @@ function buscaFrase() {
         
     });
     
+    inicializaMarcadores();
+    
     
     
 }
@@ -64,4 +69,5 @@ function trocaFrase(data) {
     frase.text(data.texto);
     atualizaTexto();
     atualizaTempo(data.tempo);
+    inicializaMarcadores();
 }

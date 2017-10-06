@@ -5,7 +5,7 @@ var frase = $('.frase').text();
 
 
 $(document).ready(function(){
-
+    atualizaPlacar();
     atualizaTexto();
     atualizaCampo();
     tempoDeJogo();
@@ -78,6 +78,8 @@ function reiniciaJogo (){
 
 
 function inicializaMarcadores () {
+    
+    var frase = $('.frase').text();
 
     campo.on("input", function(){
         

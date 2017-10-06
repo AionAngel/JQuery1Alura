@@ -1,5 +1,6 @@
 
 $("#botao-placar").click(mostraPlacar);
+$("#botao-sync").click(sincronizaPlacar);
 
 function mostraPlacar () {
     $(".placar").stop().slideToggle(600);
@@ -64,4 +65,52 @@ function removeLinha(event) {
     setTimeout(function(){
         linha.remove();
     },1000);
+}
+
+function sincronizaPlacar() {
+   console.log("Hi");
+   
+   var placar = [];
+   
+   var linhas = $("tbody>tr");
+   
+   linhas.each(function() {
+       
+       var usuario = $(this).find("td:nth-child(1)").text();
+       
+       var palavras = $(this).find("td:nth-child(2)").text();
+       
+       var score = {
+           usuario: usuario,
+           pontos: palavras
+       }
+       
+       placar.push(score);
+      
+   });
+   
+   var dados = {
+       placar: placar
+   };
+   
+   $.post("https://cursojqueryalura-aionangel.c9users.io:8080/placar",dados,function() {
+       console.log("Salvou o placar no servidor");
+   })
+}
+
+function atualizaPlacar() {
+    
+    $.get("https://cursojqueryalura-aionangel.c9users.io:8080/placar", function(data) {
+        console.log("Os dados foram solicitados");
+        
+        $(data).each(function() {
+            
+            var linha = novaLinha(this.usuario, this.pontos);
+            
+            linha.find(".botao-remover").click(removeLinha);
+            
+            $("tbody").append(linha);
+            
+        });
+    });
 }
